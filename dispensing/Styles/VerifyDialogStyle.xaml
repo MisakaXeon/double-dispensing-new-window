@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:dependencies="clr-namespace:dispensing.ExDependencies"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="BaseStyle.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="BackgroundStyle" TargetType="Border">
+        <Setter Property="CornerRadius" Value="18"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                    <GradientStop Offset="0" Color="#FFCCDDFF"></GradientStop>
+                    <GradientStop Offset="1" Color="White"></GradientStop>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="VerifyInputBoxStyle" TargetType="TextBox" BasedOn="{StaticResource TextboxBase}">
+        <!--<Setter Property="FontSize"></Setter>-->
+        <Setter Property="Width" Value="540"></Setter>
+        <Setter Property="Height" Value="60"></Setter>
+        <Setter Property="Margin" Value="120, 0, 0, 0"></Setter>
+        <Setter Property="dependencies:TextboxExDependency.TextWater" Value="请输入密码"></Setter>
+        <Setter Property="dependencies:TextboxExDependency.WaterTextMargin" Value="27, 0, 0, 0"></Setter>
+        <Setter Property="dependencies:TextboxExDependency.WaterTextFontSize" Value="24"></Setter>
+        <Setter Property="dependencies:TextboxExDependency.WaterTextFontWeight" Value="Bold"></Setter>
+        <Setter Property="dependencies:TextboxExDependency.WaterTextColor" Value="#B3B3B3"></Setter>
+    </Style>
+
+
+    <!--font-size: 24px;
+color: #FFFFFF;
+text-align: center;
+line-height: 24px;
+font-weight: 500;-->
+    <Style x:Key="VerifySureBtnStyle" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="Background" Value="#3377FF"></Setter>
+        <Setter Property="dependencies:ButtonExDependency.Radius" Value="9"></Setter>
+        <Setter Property="Width" Value="150"></Setter>
+        <Setter Property="Height" Value="60"></Setter>
+        <Setter Property="Margin" Value="30, 0, 0, 0"></Setter>
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Foreground" Value="#FFFFFF"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        
+    </Style>
+</ResourceDictionary>

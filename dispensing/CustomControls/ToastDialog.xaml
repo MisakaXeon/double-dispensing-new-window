@@ -1,0 +1,68 @@
+﻿<local:CustomDialogControl x:Class="dispensing.CustomControls.ToastDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dispensing.CustomControls"
+                           xmlns:converters="clr-namespace:dispensing.CustomConverters"
+                           xmlns:items="clr-namespace:dispensing.CustomConverters.Items"
+             >
+    <local:CustomDialogControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/BaseStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Styles/IconResources.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Styles/StaticValueResources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <converters:AnyConverter x:Key="ToastIconConverter">
+                <converters:AnyConverter.AnyConverts>
+                    <items:AnyItem From="{StaticResource Bool_True}" To="{StaticResource TipOkIcon}"></items:AnyItem>
+                    <items:AnyItem From="{StaticResource Bool_False}" To="{StaticResource TipErrorIcon}"></items:AnyItem>
+                </converters:AnyConverter.AnyConverts>
+            </converters:AnyConverter>
+
+            <Style TargetType="Image">
+                <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+                <Setter Property="Width" Value="36"></Setter>
+                <Setter Property="Height" Value="36"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Margin" Value="9"></Setter>
+            </Style>
+
+            <Style TargetType="TextBlock">
+                <Setter Property="VerticalAlignment" Value="Top"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Margin" Value="9"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="24"></Setter>
+            </Style>
+
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="9"></Setter>
+                <Setter Property="Background" Value="#99000000"></Setter>
+            </Style>
+
+            <converters:AnyConverter x:Key="HeightStyle">
+                <converters:AnyConverter.AnyConverts>
+                    <items:AnyItem From="{x:Null}" To="0"></items:AnyItem>
+                </converters:AnyConverter.AnyConverts>
+                <converters:AnyConverter.AnyOther>
+                    <items:AnyOtherItem To="*"></items:AnyOtherItem>
+                </converters:AnyConverter.AnyOther>
+            </converters:AnyConverter>
+        </ResourceDictionary>
+    </local:CustomDialogControl.Resources>
+    <Border>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding IsOk,Converter={StaticResource HeightStyle}}"></RowDefinition>
+                <RowDefinition Height="{Binding ToastContent,Converter={StaticResource HeightStyle}}"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Image Source="{Binding IsOk,Converter={StaticResource ToastIconConverter}}"></Image>
+            <TextBlock Text="{Binding ToastContent}" Grid.Row="1"></TextBlock>
+        </Grid>
+    </Border>
+</local:CustomDialogControl>

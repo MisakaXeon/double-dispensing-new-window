@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="dispensing.CustomControls.RecordBookPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dispensing.CustomControls"
+             xmlns:dependencies="clr-namespace:dispensing.ExDependencies"
+             xmlns:converter="clr-namespace:dispensing.CustomConverters"
+             xmlns:items="clr-namespace:dispensing.CustomConverters.Items" xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/RecordBookPageStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Styles/StockStatisticsPageStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Styles/StaticValueResources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+            <system:String x:Key="AddStr">加药记录</system:String>
+            <system:String x:Key="GetStr">取药记录</system:String>
+
+            <Visibility x:Key="Visiable">Visible</Visibility>
+            <Visibility x:Key="Collapsed">Collapsed</Visibility>
+            <converter:AnyConverter x:Key="AddToVisual">
+                <converter:AnyConverter.AnyConverts>
+                    <items:AnyItem From="{StaticResource AddStr}" To="{StaticResource Visiable}"></items:AnyItem>
+                </converter:AnyConverter.AnyConverts>
+                <converter:AnyConverter.AnyOther>
+                    <items:AnyOtherItem To="{StaticResource Collapsed}"></items:AnyOtherItem>
+                </converter:AnyConverter.AnyOther>
+            </converter:AnyConverter>
+
+            <converter:AnyConverter x:Key="GetToVisual">
+                <converter:AnyConverter.AnyConverts>
+                    <items:AnyItem From="{StaticResource GetStr}" To="{StaticResource Visiable}"></items:AnyItem>
+                </converter:AnyConverter.AnyConverts>
+                <converter:AnyConverter.AnyOther>
+                    <items:AnyOtherItem To="{StaticResource Collapsed}"></items:AnyOtherItem>
+                </converter:AnyConverter.AnyOther>
+            </converter:AnyConverter>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="38">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Background="#F5F5F5" CornerRadius="9" Height="62" Width="482" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Name="Group"
+                        dependencies:RadioButtonExDependency.RadioButtonIsGroup="True"
+                        dependencies:RadioButtonExDependency.RadioSelectedChangedCommand="{Binding SearchCommand}"
+                        dependencies:RadioButtonExDependency.RadioButtonSelectedItem="加药记录">
+                <RadioButton Content="加药记录" Style="{StaticResource SingleSelectedButtonStyle}" Width="240"
+                             IsChecked="True" dependencies:ButtonExDependency.Radius="9, 0, 0, 9"></RadioButton>
+                <RadioButton Content="取药记录" Style="{StaticResource SingleSelectedButtonStyle}" Width="240"
+                             dependencies:ButtonExDependency.Radius="0"></RadioButton>
+            </StackPanel>
+        </Border>
+
+        <ListBox Grid.Row="1" Style="{StaticResource AddMedicineListStyle}" ItemsSource="{Binding AddList}"
+                 Visibility="{Binding (dependencies:RadioButtonExDependency.RadioButtonSelectedItem),ElementName=Group,Converter={StaticResource AddToVisual}}"></ListBox>
+
+        <ListBox Grid.Row="1" Style="{StaticResource AddMedicineGetListStyle}" ItemsSource="{Binding GetList}"
+                 Visibility="{Binding (dependencies:RadioButtonExDependency.RadioButtonSelectedItem),ElementName=Group,Converter={StaticResource GetToVisual}}"
+                 ></ListBox>
+
+        <Border Style="{StaticResource BottomBannerStyle}" Grid.Row="1">
+            <TextBlock Text="上下滑动查看更多" Style="{StaticResource BottomBannerTextStyle}"></TextBlock>
+        </Border>
+    </Grid>
+</UserControl>

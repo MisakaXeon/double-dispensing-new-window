@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="dispensing.CustomControls.IndexContentPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dispensing.CustomControls"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/IndexPageStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border Style="{StaticResource CardBorderStyle}" MouseUp="OpenDosingAdministration">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Source="{StaticResource ListAddIcon}" Style="{StaticResource ContentImageStyle}"></Image>
+                    <TextBlock Text="加药管理" Grid.Row="1" Style="{StaticResource ContentImageTitleStyle}"></TextBlock>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource CardBorderStyle}" Margin="150, 0, 0, 0" MouseUp="OpenSetting">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Source="{StaticResource ConfigurationIcon}" Style="{StaticResource ContentImageStyle}"></Image>
+                    <TextBlock Text="系统设置" Grid.Row="1" Style="{StaticResource ContentImageTitleStyle}"></TextBlock>
+                </Grid>
+            </Border>
+        </StackPanel>
+        <local:DosingAdministration Visibility="Collapsed" x:Name="DosingAdministrationControl"></local:DosingAdministration>
+    </Grid>
+</UserControl>

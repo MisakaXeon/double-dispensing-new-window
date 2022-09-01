@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="dispensing.CustomControls.TakeMedicinePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dispensing.CustomControls"
+             xmlns:customControls="clr-namespace:dispensing.CustomControls"
+             xmlns:dependencies="clr-namespace:dispensing.ExDependencies"
+             xmlns:vlc="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
+             Focusable="True">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/TakeMedicinePageStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Styles/IconResources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource PageBackgroundStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="320"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="385"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="130"></RowDefinition>
+            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="深圳大学总医院" Style="{StaticResource TextStyle}" Margin="16, 0, 0, 0" FontWeight="Regular"></TextBlock>
+            <TextBlock dependencies:TextBlockExDependency.TimerFormat="yyyy-MM-dd HH:mm" Grid.Column="1" Style="{StaticResource TextStyle}"
+                       FlowDirection="RightToLeft" Margin="0, 0, 16, 0" FontWeight="Regular"></TextBlock>
+        </Grid>
+
+        <Image Source="{StaticResource BnnerImage}" Style="{StaticResource TitleImage1Style}" Grid.Row="1"></Image>
+
+        <TextBlock Text="扫码取药" Grid.Row="2" Style="{StaticResource TextBannerStyle}" Margin="0, 120, 0, 0" FontWeight="Bold"></TextBlock>
+        <Border Grid.Row="3" ClipToBounds="True" CornerRadius="10" Width="{Binding ElementName=mediaElement,Path=ActualWidth}"
+                Height="{Binding ElementName=mediaElement,Path=ActualHeight}" Margin="0, 60, 0, 0">
+            <!--<MediaElement Name="mediaElement" Style="{StaticResource MediaStyle}"
+                      Stretch="Fill">
+                <MediaElement.Clip>
+                    -->
+            <!--矩形裁剪-->
+            <!--
+                    <RectangleGeometry RadiusX="10" RadiusY="10"  
+                                       Rect="0,0,480,320" />
+                </MediaElement.Clip>
+                <MediaElement.Triggers>
+                    <EventTrigger RoutedEvent="MediaElement.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <MediaTimeline Storyboard.TargetName="mediaElement"  
+                                                 Source="{Binding MediaUri}"  RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </MediaElement.Triggers>
+            </MediaElement>-->
+            <vlc:VlcControl Name="PlayElement" Width="410" Height="308" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="{x:Null}">
+                <vlc:VlcControl.Clip>
+                    <RectangleGeometry RadiusX="10" RadiusY="10"  
+                                       Rect="0,0,410,308" />
+                </vlc:VlcControl.Clip>
+            </vlc:VlcControl>
+        </Border>
+
+        <TextBlock Text="处方号取药" Grid.Row="4" Style="{StaticResource TextBannerStyle}" Margin="0, 120, 0, 0" FontWeight="Bold"></TextBlock>
+        <TextBox Grid.Row="5" Style="{StaticResource InputNumStyle}" Text="{Binding MedicineSerial, UpdateSourceTrigger=PropertyChanged}" 
+                 dependencies:TextboxExDependency.IsBindKeyboard="True" Margin="0, 60, 0, 0"></TextBox>
+
+        <Button Style="{StaticResource ButtonStyle}" Content="确认" Grid.Row="6" Margin="0, 30, 0, 0" Cursor="Hand" Command="{Binding SureCommand}"></Button>
+
+        <Image Grid.Row="7" Source="{StaticResource StepImage}" Margin="110, 132, 110, 140"></Image>
+
+
+        <customControls:TakeMedicineInfoPage Grid.RowSpan="8" Visibility="Collapsed" x:Name="TakeMedicineInfoPage"></customControls:TakeMedicineInfoPage>
+    </Grid>
+</UserControl>

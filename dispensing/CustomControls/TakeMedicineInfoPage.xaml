@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="dispensing.CustomControls.TakeMedicineInfoPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dispensing.CustomControls"
+             xmlns:dependencies="clr-namespace:dispensing.ExDependencies"
+             x:Name="MedicineMainControl"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/TakeMedicinePageStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Styles/IconResources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource PageBackgroundStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="130"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="深圳大学总医院" Style="{StaticResource TextStyle}" Margin="16, 5, 0, 0"></TextBlock>
+            <TextBlock dependencies:TextBlockExDependency.TimerFormat="yyyy-MM-dd HH:mm" Grid.Column="1" Style="{StaticResource TextStyle}"
+                       FlowDirection="RightToLeft" Margin="0, 5, 16, 0"></TextBlock>
+        </Grid>
+
+        <TextBlock Text="{Binding Name}" Grid.Row="1"  Style="{StaticResource NameTextStyle}"></TextBlock>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="{Binding Sex}" Style="{StaticResource SexAndAgeAndMedicineInfoStyle}" Margin="60, 14, 0, 0"></TextBlock>
+            <TextBlock Text="{Binding Age}" Style="{StaticResource SexAndAgeAndMedicineInfoStyle}" Margin="24, 14, 0, 0"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <TextBlock Style="{StaticResource SexAndAgeAndMedicineInfoStyle}" Margin="60, 14, 0, 0">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}处方号 {0}">
+                        <Binding Path="Serial"></Binding>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Text="{Binding Address}" Style="{StaticResource SexAndAgeAndMedicineInfoStyle}" Margin="60, 14, 0, 0"></TextBlock>
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <TextBlock Style="{StaticResource SexAndAgeAndMedicineInfoStyle}" Margin="60, 14, 0, 0">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}处方时间 : {0}">
+                        <Binding Path="MedicineDate"></Binding>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Style="{StaticResource SexAndAgeAndMedicineInfoStyle}" Margin="60, 14, 0, 0">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}取药时间 : {0}">
+                        <Binding Path="TakeDate"></Binding>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+
+        <Border Grid.Row="5" Style="{StaticResource MedicineListBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="药品信息" Style="{StaticResource MedicineInfoTitle}" VerticalAlignment="Center"
+                           Margin="60, 0, 0, 0"></TextBlock>
+                <TextBlock Text="数量(盒)" Style="{StaticResource MedicineInfoTitle}" Grid.Column="1" 
+                           HorizontalAlignment="Right" Margin="0, 0, 56, 0"></TextBlock>
+                <ListBox Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding MedicineInfos}" Style="{StaticResource MedicineListStyle}"></ListBox>
+            </Grid>
+        </Border>
+
+        <TextBlock Grid.Row="6" Style="{StaticResource MedicineInfoTitle}" Margin="60, 0, 0, 0">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}共计 {0} 种药品，共计 {1} 件">
+                    <Binding Path="Classes"></Binding>
+                    <Binding Path="TotalCount"></Binding>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
+        <DockPanel Grid.Row="7">
+            <Button Content="退出" DockPanel.Dock="Left" Style="{StaticResource ExitBtnStyle}" Command="{Binding Path=ExitCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:TakeMedicineInfoPage}}" Cursor="Hand"></Button>
+            <Button DockPanel.Dock="Right" Style="{StaticResource GetMedicineBtnStyle}" Command="{Binding Path=TakeMedicineCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:TakeMedicineInfoPage}}" Cursor="Hand" Name="TakeMedicineBtn">
+                <Button.Content>
+                    <DockPanel>
+                        <TextBlock Text="取药" DockPanel.Dock="Top" Style="{StaticResource GetMedicineUpTextStyle}"></TextBlock>
+                        <TextBlock Text="请确认药品信息" Style="{StaticResource GetMedicineBottomTextStyle}"></TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+        </DockPanel>
+    </Grid>
+</UserControl>

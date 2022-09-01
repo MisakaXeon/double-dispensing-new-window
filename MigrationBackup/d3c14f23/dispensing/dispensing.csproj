@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C762F844-2AC5-4265-8155-294CC4DCFC3D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>dispensing</RootNamespace>
+    <AssemblyName>dispensing</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PropertyChanged, Version=3.4.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.3.4.0\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Adorners\WindowDialogAdorner.cs" />
+    <Compile Include="CustomCommand\SampleCommand.cs" />
+    <Compile Include="CustomControls\BottomSlotMedicineInfoDialog.xaml.cs">
+      <DependentUpon>BottomSlotMedicineInfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\CustomDialogControl.cs" />
+    <Compile Include="CustomControls\CustomGridPanel.cs" />
+    <Compile Include="CustomControls\DispensingDialog.xaml.cs">
+      <DependentUpon>DispensingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\DosingAdministration.xaml.cs">
+      <DependentUpon>DosingAdministration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ExceptionHandlingPage.xaml.cs">
+      <DependentUpon>ExceptionHandlingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\IndexContentPage.xaml.cs">
+      <DependentUpon>IndexContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\IndexPage.xaml.cs">
+      <DependentUpon>IndexPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\RecordBookPage.xaml.cs">
+      <DependentUpon>RecordBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\StockStatisticsPage.xaml.cs">
+      <DependentUpon>StockStatisticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\TakeMedicineInfoPage.xaml.cs">
+      <DependentUpon>TakeMedicineInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\TakeMedicinePage.xaml.cs">
+      <DependentUpon>TakeMedicinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\VerifyDialog.xaml.cs">
+      <DependentUpon>VerifyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomConverters\AnyConverter.cs" />
+    <Compile Include="CustomConverters\IndexConverter.cs" />
+    <Compile Include="CustomConverters\Items\AnyItem.cs" />
+    <Compile Include="Enums\InputType.cs" />
+    <Compile Include="ExDependencies\ListBoxExDependency.cs" />
+    <Compile Include="ExDependencies\RadioButtonExDependency.cs" />
+    <Compile Include="ExDependencies\TextBlockExDependency.cs" />
+    <Compile Include="ExDependencies\TextboxExDependency.cs" />
+    <Compile Include="Expends\EnumExpend.cs" />
+    <Compile Include="IndexMainWindow.xaml.cs">
+      <DependentUpon>IndexMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\DosingAdministrationModel.cs" />
+    <Compile Include="ViewModel\ExceptionHandlingModel.cs" />
+    <Compile Include="ViewModel\Items\MedicineOptionItem.cs" />
+    <Compile Include="ViewModel\Items\LayerContent.cs" />
+    <Compile Include="ViewModel\Items\LayerMedicineInfo.cs" />
+    <Compile Include="ViewModel\KeyboardControlModel.cs" />
+    <Compile Include="ViewModel\Items\MedicineInfo.cs" />
+    <Compile Include="ViewModel\MedicineManagerModel.cs" />
+    <Compile Include="ViewModel\RecordBookModel.cs" />
+    <Compile Include="ViewModel\StockStatisticsModel.cs" />
+    <Compile Include="ViewModel\TakeMedicineInfoModel.cs" />
+    <Page Include="CustomControls\BottomSlotMedicineInfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\DispensingDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\DosingAdministration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ExceptionHandlingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\FullKeyboardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="CustomControls\IndexContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\IndexPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\RecordBookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\StockStatisticsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\TakeMedicineInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\TakeMedicinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\VerifyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IndexMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomControls\FullKeyboardControl.xaml.cs">
+      <DependentUpon>FullKeyboardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExDependencies\ButtonExDependency.cs" />
+    <Compile Include="Expends\WindowExpend.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\BaseStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\BottomSlotMedicineInfoDialogStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DispensingDialogStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DosingAdministrationStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\EnumResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ExceptionHandlingPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\IconResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\IndexPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\KeyboardStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\RecordBookPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\StaticValueResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\StockStatisticsPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TakeMedicinePageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\VerifyDialogStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon_keyboard_caselock_off.png" />
+    <Resource Include="Resources\icon_keyboard_caselock_on.png" />
+    <Resource Include="Resources\icon_keyboard_delete.png" />
+    <Resource Include="Resources\icon_keyboard_fold.png" />
+    <Resource Include="Resources\icon_tips_alert.png" />
+    <Resource Include="Resources\icon_tips_loading.png" />
+    <Resource Include="Resources\icon_tips_wait.png" />
+    <Resource Include="Resources\banner_sugh.png" />
+    <Resource Include="Resources\img_setup.png" />
+    <Resource Include="Resources\logo_lachesis_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WindowsApiLib\WindowsApiLib.csproj">
+      <Project>{43821231-b908-43bb-b75c-3c9a3949877d}</Project>
+      <Name>WindowsApiLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\video_tutorail.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow_down_blue.png" />
+    <Resource Include="Resources\btn_month_previous.png" />
+    <Resource Include="Resources\btn_year_previous.png" />
+    <Resource Include="Resources\icon_add.png" />
+    <Resource Include="Resources\icon_back.png" />
+    <Resource Include="Resources\icon_close_pop.png" />
+    <Resource Include="Resources\icon_id_configuration  .png" />
+    <Resource Include="Resources\icon_no_data.png" />
+    <Resource Include="Resources\icon_out_list_add.png" />
+    <Resource Include="Resources\icon_reduce.png" />
+    <Resource Include="Resources\icon_search.png" />
+    <Resource Include="Resources\icon_tips_error.png" />
+    <Resource Include="Resources\icon_tips_ok.png" />
+    <Resource Include="Resources\tab_select.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props'))" />
+  </Target>
+</Project>

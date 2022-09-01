@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C762F844-2AC5-4265-8155-294CC4DCFC3D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>dispensing</RootNamespace>
+    <AssemblyName>dispensing</AssemblyName>
+    <LangVersion>8.0</LangVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>2B51BC080EC4142087D803018E35DAA21A08011E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>dispensing_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="dispensingMachine.Infrastracture, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\dispensingMachine.Infrastracture.dll</HintPath>
+    </Reference>
+    <Reference Include="halcondotnet, Version=13.0.0.0, Culture=neutral, PublicKeyToken=4973bed59ddbf2b8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\halcondotnet.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MvCameraControl.Net, Version=3.4.0.1, Culture=neutral, PublicKeyToken=52fddfb3f94be800, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\MvCameraControl.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Adorners\WindowDialogAdorner.cs" />
+    <Compile Include="Class\Camera.cs" />
+    <Compile Include="Class\ExchangeData.cs" />
+    <Compile Include="Class\Http.cs" />
+    <Compile Include="Class\IniFile.cs" />
+    <Compile Include="Class\log4net.cs" />
+    <Compile Include="Class\PrintService.cs" />
+    <Compile Include="Class\RemoteObject.cs" />
+    <Compile Include="Class\RGPrinter.cs" />
+    <Compile Include="Class\serial.cs" />
+    <Compile Include="Class\ServerData.cs" />
+    <Compile Include="Class\socket.cs" />
+    <Compile Include="Class\sqlite.cs" />
+    <Compile Include="Class\TestProcedure.cs" />
+    <Compile Include="CustomCommand\SampleCommand.cs" />
+    <Compile Include="CustomControls\BottomSlotMedicineInfoDialog.xaml.cs">
+      <DependentUpon>BottomSlotMedicineInfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\CustomDialogControl.cs" />
+    <Compile Include="CustomControls\CustomGridPanel.cs" />
+    <Compile Include="CustomControls\DispensingDialog.xaml.cs">
+      <DependentUpon>DispensingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\DosingAdministration.xaml.cs">
+      <DependentUpon>DosingAdministration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ExceptionHandlingPage.xaml.cs">
+      <DependentUpon>ExceptionHandlingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\IndexContentPage.xaml.cs">
+      <DependentUpon>IndexContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\IndexPage.xaml.cs">
+      <DependentUpon>IndexPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\RecordBookPage.xaml.cs">
+      <DependentUpon>RecordBookPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\StockStatisticsPage.xaml.cs">
+      <DependentUpon>StockStatisticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\TakeLoadingWindow.xaml.cs">
+      <DependentUpon>TakeLoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\TakeMedicineInfoPage.xaml.cs">
+      <DependentUpon>TakeMedicineInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\TakeMedicinePage.xaml.cs">
+      <DependentUpon>TakeMedicinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ToastDialog.xaml.cs">
+      <DependentUpon>ToastDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\VerifyDialog.xaml.cs">
+      <DependentUpon>VerifyDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomConverters\AnyConverter.cs" />
+    <Compile Include="CustomConverters\BottomSelectedItemConverter.cs" />
+    <Compile Include="CustomConverters\IndexConverter.cs" />
+    <Compile Include="CustomConverters\Items\AnyItem.cs" />
+    <Compile Include="Enums\InputType.cs" />
+    <Compile Include="ExDependencies\ListBoxExDependency.cs" />
+    <Compile Include="ExDependencies\RadioButtonExDependency.cs" />
+    <Compile Include="ExDependencies\TextBlockExDependency.cs" />
+    <Compile Include="ExDependencies\TextboxExDependency.cs" />
+    <Compile Include="Expends\EnumExpend.cs" />
+    <Compile Include="Expends\ObjectExpend.cs" />
+    <Compile Include="IndexMainWindow.xaml.cs">
+      <DependentUpon>IndexMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\DosingAdministrationModel.cs" />
+    <Compile Include="ViewModel\ExceptionHandlingModel.cs" />
+    <Compile Include="ViewModel\Items\MedicineOptionItem.cs" />
+    <Compile Include="ViewModel\Items\LayerContent.cs" />
+    <Compile Include="ViewModel\Items\LayerMedicineInfo.cs" />
+    <Compile Include="ViewModel\KeyboardControlModel.cs" />
+    <Compile Include="ViewModel\Items\MedicineInfo.cs" />
+    <Compile Include="ViewModel\MedicineManagerModel.cs" />
+    <Compile Include="ViewModel\RecordBookModel.cs" />
+    <Compile Include="ViewModel\StockStatisticsModel.cs" />
+    <Compile Include="ViewModel\TakeMedicineInfoModel.cs" />
+    <Page Include="CustomControls\BottomSlotMedicineInfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\DispensingDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\DosingAdministration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ExceptionHandlingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\FullKeyboardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="CustomControls\IndexContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\IndexPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\RecordBookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\StockStatisticsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\TakeLoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\TakeMedicineInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\TakeMedicinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ToastDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\VerifyDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IndexMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomControls\FullKeyboardControl.xaml.cs">
+      <DependentUpon>FullKeyboardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExDependencies\ButtonExDependency.cs" />
+    <Compile Include="Expends\WindowExpend.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\BaseStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\BottomSlotMedicineInfoDialogStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DispensingDialogStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DosingAdministrationStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\EnumResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ExceptionHandlingPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\IconResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\IndexPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\KeyboardStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\RecordBookPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\StaticValueResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\StockStatisticsPageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TakeMedicinePageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\VerifyDialogStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="dispensing_TemporaryKey.pfx" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\Font\HarmonyOS_Sans_SC_Bold.ttf" />
+    <Resource Include="Resources\Font\HarmonyOS_Sans_SC_Light.ttf" />
+    <Resource Include="Resources\Font\HarmonyOS_Sans_SC_Medium.ttf" />
+    <Resource Include="Resources\Font\HarmonyOS_Sans_SC_Regular.ttf" />
+    <Resource Include="Resources\Font\HarmonyOS_Sans_SC_Thin.ttf" />
+    <Resource Include="Resources\Font\HarmonyOS_Sans_SC_Black.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon_keyboard_caselock_off.png" />
+    <Resource Include="Resources\icon_keyboard_caselock_on.png" />
+    <Resource Include="Resources\icon_keyboard_delete.png" />
+    <Resource Include="Resources\icon_keyboard_fold.png" />
+    <Resource Include="Resources\icon_tips_alert.png" />
+    <Resource Include="Resources\icon_tips_loading.png" />
+    <Resource Include="Resources\icon_tips_wait.png" />
+    <Resource Include="Resources\banner_sugh.png" />
+    <Resource Include="Resources\img_setup.png" />
+    <Resource Include="Resources\logo_lachesis_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GifImageLib\GifImageLib.csproj">
+      <Project>{97e0e92d-1bfe-424f-8beb-6e5d172b507d}</Project>
+      <Name>GifImageLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WindowsApiLib\WindowsApiLib.csproj">
+      <Project>{43821231-b908-43bb-b75c-3c9a3949877d}</Project>
+      <Name>WindowsApiLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\boll_loading.gif" />
+    <Content Include="Resources\video_tutorail.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow_down_blue.png" />
+    <Resource Include="Resources\btn_month_previous.png" />
+    <Resource Include="Resources\btn_year_previous.png" />
+    <Resource Include="Resources\icon_add.png" />
+    <Resource Include="Resources\icon_back.png" />
+    <Resource Include="Resources\icon_close_pop.png" />
+    <Resource Include="Resources\icon_id_configuration  .png" />
+    <Resource Include="Resources\icon_no_data.png" />
+    <Resource Include="Resources\icon_out_list_add.png" />
+    <Resource Include="Resources\icon_reduce.png" />
+    <Resource Include="Resources\icon_search.png" />
+    <Resource Include="Resources\icon_tips_error.png" />
+    <Resource Include="Resources\icon_tips_ok.png" />
+    <Resource Include="Resources\tab_select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HandyControl">
+      <Version>3.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody">
+      <Version>3.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Speech">
+      <Version>6.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Vlc.DotNet.Wpf">
+      <Version>3.1.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

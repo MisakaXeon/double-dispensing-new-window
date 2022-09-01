@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="dispensing.CustomControls.BottomSlotMedicineInfoDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dispensing.CustomControls"
+             xmlns:dependencies="clr-namespace:dispensing.ExDependencies"
+             Background="White" Height="300"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/BottomSlotMedicineInfoDialogStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="20, 20, 20, 20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="360"></ColumnDefinition>
+            <ColumnDefinition Width="360"></ColumnDefinition>
+            <ColumnDefinition Width="360"></ColumnDefinition>
+            <ColumnDefinition Width="360"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="药槽位置" Style="{StaticResource TitlTextStyle}"></TextBlock>
+        <TextBlock Text="药品名称" Grid.Column="1" Style="{StaticResource TitlTextStyle}"></TextBlock>
+        <TextBlock Text="有效期至" Grid.Column="2" Style="{StaticResource TitlTextStyle}"></TextBlock>
+        <TextBlock Text="批号" Grid.Column="3" Style="{StaticResource TitlTextStyle}"></TextBlock>
+
+        <TextBox Grid.Row="1" Text="{Binding Position}" Style="{StaticResource ItemInfoBoxStyle}"
+                  dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource ItemInfoBoxStyle}" 
+                 dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+        <CheckBox Grid.Row="1" Grid.Column="2" DataContext="{Binding Path=.}" Style="{StaticResource DateSelectorStyle}" Cursor="Hand"></CheckBox>
+        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding SerialNumber}" Style="{StaticResource ItemInfoBoxStyle}"  
+                 dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="4">
+            <TextBlock Text="长" Style="{StaticResource TitlTextStyle}" Margin="21, 0, 0, 0"></TextBlock>
+            <TextBlock Text="宽" Grid.Column="1" Style="{StaticResource TitlTextStyle}" Margin="210, 0, 0, 0"></TextBlock>
+            <TextBlock Text="高" Style="{StaticResource TitlTextStyle}" Margin="210, 0, 0, 0"></TextBlock>
+            <TextBlock Text="加药数量" Style="{StaticResource TitlTextStyle}" Margin="200, 0, 0, 0"></TextBlock>
+            <TextBlock Text="药槽ID" Style="{StaticResource TitlTextStyle}" Margin="80, 0, 0, 0"></TextBlock>
+            <TextBlock Text="药品编号" Style="{StaticResource TitlTextStyle}" Margin="90, 0, 0, 0"></TextBlock>
+            <TextBlock Text="机器号" Style="{StaticResource TitlTextStyle}" Margin="80, 0, 0, 0"></TextBlock>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="4">
+            <TextBox Text="{Binding Long}" Style="{StaticResource ItemUnitBoxStyle}" Margin="21, 0, 0, 0"
+                      dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+            <TextBlock Text="毫米" Style="{StaticResource BoxUnitTextStyle}"></TextBlock>
+
+            <TextBox Text="{Binding Width}" Style="{StaticResource ItemUnitBoxStyle}"
+                      dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+            <TextBlock Text="毫米" Style="{StaticResource BoxUnitTextStyle}"></TextBlock>
+
+            <TextBox Text="{Binding Height}" Style="{StaticResource ItemUnitBoxStyle}"
+                      dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+            <TextBlock Text="毫米" Style="{StaticResource BoxUnitTextStyle}"></TextBlock>
+
+            <TextBox Style="{StaticResource ItemUnitBoxStyle}" Text="{Binding Stock}"
+                      dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+
+            <TextBox Style="{StaticResource ItemUnitBoxStyle}" Text="{Binding Id}"
+                      dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+            <TextBox Style="{StaticResource ItemUnitBoxStyle}" Text="{Binding Number}"
+                      dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+            <TextBox Style="{StaticResource ItemUnitBoxStyle}" Text="{Binding Machine}"
+                      dependencies:TextboxExDependency.IsBindKeyboard="True" dependencies:TextboxExDependency.KeyBorderVerticalAlignment="Top"></TextBox>
+        </StackPanel>
+
+
+        <!--<Button Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" Style="{StaticResource CloseBtnStyle}"></Button>-->
+
+        <Button Content="删除" Style="{StaticResource DeleteBtnStyle}" Grid.Row="2" Grid.Column="4" Cursor="Hand" Command="{Binding DeleteCommand}" CommandParameter="{Binding DataContext.CurrentSelectedLayerContent,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TabControl}}"></Button>
+        <!--<Button Content="新建药品模板" Style="{StaticResource CreateBtnStyle}" Grid.Row="4" Grid.Column="1" Cursor="Hand"></Button>-->
+        <Button Content="保存" Style="{StaticResource SaveBtnStyle}" Grid.Row="3" Grid.Column="4" Command="{Binding SaveCommand}" Cursor="Hand" CommandParameter="{Binding DataContext.CurrentSelectedLayerContent,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TabControl}}"></Button>
+    </Grid>
+</UserControl>
